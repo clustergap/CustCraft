@@ -1,0 +1,9 @@
+name: CustCraft
+version: '${version}'
+main: cn.mscraft.custcraft.CustCraft
+api-version: 1.20
+authors: [ curii ]
+commands:
+  icraft:
+    description: iCraft command
+    usage: /<command>
