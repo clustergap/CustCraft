@@ -2,10 +2,13 @@ package cn.mscraft.custcraft.Loader;
 
 import cc.zoyn.core.util.serializer.ItemSerializerUtils;
 import cn.mscraft.custcraft.API.IManager;
+import cn.mscraft.custcraft.CustCraft;
 import cn.mscraft.custcraft.Model.Panel;
 import cn.mscraft.custcraft.Model.Recipe;
 import cn.mscraft.custcraft.Resource;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 
@@ -48,11 +51,14 @@ public class Yaml {
 
     public static void loadPanels(YamlConfiguration yaml) {
         for (String key : yaml.getKeys(false)) {
+            Boolean debug = yaml.getBoolean(key + ".debug");
+            String row = yaml.getString(key + ".row");
+            String title = yaml.getString(key + ".title");
             List<Integer> matrix = yaml.getIntegerList(key + ".matrix");
+            Boolean isButton = yaml.getBoolean(key + ".isButton");
             List<Integer> buttonSlots = yaml.getIntegerList(key + ".buttonSlots");
-            List<Integer> closeSlots = yaml.getIntegerList(key + ".closeSlots");
             List<Integer> resultSlots = yaml.getIntegerList(key + ".resultSlots");
-            Panel panel = new Panel(key, buttonSlots, closeSlots, matrix, resultSlots);
+            Panel panel = new Panel(key, debug, Integer.parseInt(row), title, isButton, buttonSlots, matrix, resultSlots);
             IManager.registerPanel(panel);
         }
     }

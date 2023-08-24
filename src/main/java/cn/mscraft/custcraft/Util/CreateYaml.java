@@ -5,7 +5,6 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,7 +13,7 @@ import java.io.InputStream;
 
 public class CreateYaml {
     public static class RunResponse<T> {
-        public static final String PLUGIN_RESOURCE_NOT_FOUND = "plugin.reource.not.found";
+        public static final String PLUGIN_RESOURCE_NOT_FOUND = "plugin.resource.not.found";
 
         public static final String PLUGIN_FILE_EXISTS = "plugin.file.exists";
 
@@ -51,7 +50,7 @@ public class CreateYaml {
             return new RunResponse<>(true, to, "plugin.file.exists");
         InputStream is = pl.getResource(path);
         if (is == null)
-            return new RunResponse<>(false, to, "plugin.reource.not.found");
+            return new RunResponse<>(false, to, "plugin.resource.not.found");
         try (InputStream ct = is) {
             byte[] buffer = new byte[1024];
             (new File(to, "..")).mkdirs();

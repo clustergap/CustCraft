@@ -1,45 +1,25 @@
-# 语言 Language
-# 可选 Optional: lang_en lang_cn lang_ru
+# 语言 Language 可选 Optional: lang_en lang_cn lang_ru
 language: "lang_cn"
 
 # 设置
-# setting
 setting:
   # 如果是new，右键工作台时打开自定义矩阵合成系统
-  # if new, open custom crafting system
-  # when right click crafting-table
   # 如果是sel，右键工作台时打开原版合成系统-自定义矩阵合成系统选择界面
-  # if sel, open vanilla Gui-custom crafting system select Gui
-  # when right click crafting-table
   # 如果是old，右键工作台时打开原版合成系统
-  # if old, open vanilla crafting-table
-  # when right click crafting-table
   default: sel
   # 如果打开新型合成系统
   # 打开的GUI的合成面板ID
-  # if open custom crafting system
-  # open the gui id custom crafting system
   gui: gui
 # 关于合成系统菜单
-# about custom crafting system
 inventory:
   # 合成系统标题
-  # inventory title
-  #title: '&lcrafting system'
   title: '&l合成系统'
   # 点击合成按钮的名称
-  # click on the name of the composition button
-  #button: '&7&l[&acomposition&7&l]'
   button: '&7&l[&a点击合成&7&l]'
   # 关闭按钮的名称
-  # click on the name of the close button
-  #close: '&7&l[&cclose&7&l]'
   close: '&7&l[&c关闭&7&l]'
 # 关于选择界面 About selection Gui
 selectGui:
-  #title: "&lPlease select Crafting System"
   title: "&l请选择合成系统"
-  #vanillaGuiButton: "&7&l[&aVanilla Crafting Gui&7&l]"
   vanillaGuiButton: "&7&l[&a原版合成系统&7&l]"
-  #newGuiButton: "&7&l[&aNew Crafting Gui&7&l]"
   newGuiButton: "&7&l[&a新型合成系统&7&l]"

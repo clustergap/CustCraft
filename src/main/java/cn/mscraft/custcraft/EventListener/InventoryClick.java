@@ -61,27 +61,13 @@ public class InventoryClick implements Listener {
         Inventory inventory = event.getClickedInventory();
         if (inventory != null && event.getCurrentItem() != null) {
             InventoryHolder holder = inventory.getHolder();
-            if (holder instanceof ICraftTechHolder &&
-                    event.getCurrentItem().isSimilar(ItemStackUtil.getButton())) {
+            if (holder instanceof ICraftTechHolder && event.getCurrentItem().isSimilar(ItemStackUtil.getButton())) {
                 Optional<Panel> optionalPanel = IManager.getPanel(((ICraftTechHolder)holder).getPanelId());
                 if (optionalPanel.isPresent()) {
                     Panel panel = optionalPanel.get();
                     event.setCancelled(true);
                     Craft.craft((Player)event.getWhoClicked(), panel, event.getClickedInventory());
                 }
-            }
-        }
-    }
-
-    @EventHandler(ignoreCancelled = true)
-    public void clickClose(InventoryClickEvent event) {
-        Inventory inventory = event.getClickedInventory();
-        if (inventory != null && event.getCurrentItem() != null) {
-            InventoryHolder holder = inventory.getHolder();
-            if (holder instanceof ICraftTechHolder &&
-                    event.getCurrentItem().isSimilar(ItemStackUtil.getClose())) {
-                event.setCancelled(true);
-                Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) CustCraft.instance, event.getWhoClicked()::closeInventory, 0L);
             }
         }
     }
@@ -133,7 +119,7 @@ public class InventoryClick implements Listener {
                         boolean isCraft = true;
                         List<Integer> bs = panel.getButtonSlots();
                         for (Integer slot : bs) {
-                            if (!ItemStackUtil.isSimilar(inventory.getItem(slot.intValue()), ItemStackUtil.getButton()))
+                            if (!ItemStackUtil. isSimilar(inventory.getItem(slot.intValue()), ItemStackUtil.getButton()))
                                 isCraft = false;
                         }
                         if (!isCraft)

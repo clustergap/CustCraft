@@ -20,6 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.units.qual.C;
 
 import java.io.File;
 import java.util.*;
@@ -37,7 +38,7 @@ public class IManager {
             if (panel.exists())
                 Yaml.loadPanels(YamlConfiguration.loadConfiguration(panel));
         } else {
-            LogUtil.send("¬ßf[iCraft] ¬ß4ÈôÑÂ±ûÊèí‰ª∂" + plugin.getName() + "Êú™ÂêØÁî®, HookÂ§±Ë¥•");
+            LogUtil.send("°Ïf[iCraft] °Ï4∏Ω Ù≤Âº˛" + plugin.getName() + "Œ¥∆Ù”√, Hook ß∞‹");
         }
     }
 
@@ -104,29 +105,29 @@ public class IManager {
         PanelOpenEvent panelOpenEvent = new PanelOpenEvent(panel, player);
         Bukkit.getPluginManager().callEvent((Event)panelOpenEvent);
         if (!panelOpenEvent.isCancelled()) {
-            String titleGui = CustCraft.instance.getConfig().getString("inventory.title").replaceAll("&", "¬ß");
-                    Inventory GUI = Bukkit.createInventory((InventoryHolder)new ICraftTechHolder(panel.getId()), 54, titleGui);
+            String titleGui = panel.getTitle();
+            int rowGui = panel.getRow();
+            Inventory GUI = Bukkit.createInventory((InventoryHolder)new ICraftTechHolder(panel.getId()), rowGui, titleGui);
             int j = 0;
             int k = 0;
             for (int i = 0; i < GUI.getSize(); i++) {
                 if (panel.getMatrixSlots().contains(Integer.valueOf(i))) {
-                    if (!isCraft &&
-                            matrix.size() >= j + 1) {
+                    if (!isCraft && matrix.size() >= j + 1) {
                         GUI.setItem(i, matrix.get(j));
                         j++;
                     }
                 } else if (panel.getButtonSlots().contains(Integer.valueOf(i)) && !isView) {
-                    GUI.setItem(i, ItemStackUtil.getButton());
-                } else if (panel.getCloseSlot().contains(Integer.valueOf(i)) && !isView) {
-                    GUI.setItem(i, ItemStackUtil.getClose());
+//                    if (panel.getIsButton()) {
+                        GUI.setItem(i, ItemStackUtil.getButton());
+//                    }
                 } else if (panel.getResultsSlots().contains(Integer.valueOf(i))) {
-                    if (!isCraft &&
-                            results.size() >= k + 1) {
+                    if (!isCraft && results.size() >= k + 1) {
                         GUI.setItem(i, results.get(k));
                         k++;
                     }
                 } else {
-                    GUI.setItem(i, ItemStackUtil.getBaffle());
+                    if (panel.getDebug())
+                        GUI.setItem(i, ItemStackUtil.getBaffle());
                 }
             }
             player.openInventory(GUI);
@@ -136,8 +137,8 @@ public class IManager {
     public static HashMap<String, String> titleSelGui = new LinkedHashMap<>();
 
     public static void openSelGui(Player player) {
-        String vanillaGui = CustCraft.instance.getConfig().getString("selectGui.vanillaGuiButton").replaceAll("&", "¬ß");
-                String newGui = CustCraft.instance.getConfig().getString("selectGui.newGuiButton").replaceAll("&", "¬ß");
+        String vanillaGui = CustCraft.instance.getConfig().getString("selectGui.vanillaGuiButton").replaceAll("&", "°Ï");
+                String newGui = CustCraft.instance.getConfig().getString("selectGui.newGuiButton").replaceAll("&", "°Ï");
                         Inventory gui = Bukkit.createInventory((InventoryHolder)player, 9, titleSelGui.get("selTitle"));
         gui.setItem(3, itemBuild(Material.CHEST, vanillaGui));
         gui.setItem(5, itemBuild(Material.ENDER_CHEST, newGui));

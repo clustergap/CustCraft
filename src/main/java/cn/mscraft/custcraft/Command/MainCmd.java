@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 
 public class MainCmd implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (label.toLowerCase().equalsIgnoreCase("icraft")) {
+        if (label.toLowerCase().equalsIgnoreCase("icraft") || label.toLowerCase().equalsIgnoreCase("ict")) {
             String subCmd = SafeThis.get(args, 0, "");
             switch (subCmd.toLowerCase()) {
                 case "help":
@@ -21,7 +21,17 @@ public class MainCmd implements CommandExecutor {
                             OpenPanel.execute(sender, command, label, args))
                         return true;
                     break;
+                case "openp":
+                    if (sender.hasPermission("icraft.open") &&
+                            OpenPanel.execute(sender, command, label, args))
+                        return true;
+                    break;
                 case "addrecipe":
+                    if (sender.hasPermission("icraft.admin") &&
+                            AddRecipe.execute(sender, command, label, args))
+                        return true;
+                    break;
+                case "addr":
                     if (sender.hasPermission("icraft.admin") &&
                             AddRecipe.execute(sender, command, label, args))
                         return true;
@@ -31,7 +41,17 @@ public class MainCmd implements CommandExecutor {
                             DelRecipe.execute(sender, command, label, args))
                         return true;
                     break;
+                case "delr":
+                    if (sender.hasPermission("icraft.admin") &&
+                            DelRecipe.execute(sender, command, label, args))
+                        return true;
+                    break;
                 case "editrecipe":
+                    if (sender.hasPermission("icraft.admin") &&
+                            EditRecipe.execute(sender, command, label, args))
+                        return true;
+                    break;
+                case "editr":
                     if (sender.hasPermission("icraft.admin") &&
                             EditRecipe.execute(sender, command, label, args))
                         return true;
@@ -41,6 +61,14 @@ public class MainCmd implements CommandExecutor {
                             ViewRecipe.execute(sender, command, label, args))
                         return true;
                     break;
+                case "viewr":
+                    if (sender.hasPermission("icraft.view") &&
+                            ViewRecipe.execute(sender, command, label, args))
+                        return true;
+                    break;
+                default :
+                    if (sender.hasPermission("icraft.help"))
+                        Msg.send(sender, GetLangYaml.COMMAND_HELP);
             }
         }
         return true;

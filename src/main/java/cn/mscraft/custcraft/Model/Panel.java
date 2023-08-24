@@ -1,28 +1,56 @@
 package cn.mscraft.custcraft.Model;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import java.util.List;
 
 public class Panel {
     private String id;
 
-    private List<Integer> buttonSlots;
+    private Boolean debug;
 
-    private List<Integer> closeSlots;
+    private int row;
+
+    private String title;
+
+    private Boolean isButton;
+
+    private List<Integer> buttonSlots;
 
     private List<Integer> matrixSlots;
 
     private List<Integer> resultSlots;
 
-    public Panel(String id, List<Integer> buttonSlots, List<Integer> closeSlots, List<Integer> matrixSlots, List<Integer> resultSlots) {
+    public Panel(String id, Boolean debug, int row, String title, Boolean isButton, List<Integer> buttonSlots, List<Integer> matrixSlots, List<Integer> resultSlots) {
         this.id = id;
+        this.debug = debug;
+        this.row = row;
+        this.title = title;
+        this.isButton = isButton;
         this.buttonSlots = buttonSlots;
-        this.closeSlots = closeSlots;
         this.matrixSlots = matrixSlots;
         this.resultSlots = resultSlots;
     }
 
     public String getId() {
         return this.id;
+    }
+
+    public Boolean getDebug() {
+        return this.debug;
+    }
+
+    public int getRow() {
+        return this.row;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public Boolean getIsButton() {
+        return this.isButton;
     }
 
     public void setButtonSlots(List<Integer> slots) {
@@ -39,14 +67,6 @@ public class Panel {
 
     public List<Integer> getMatrixSlots() {
         return this.matrixSlots;
-    }
-
-    public void setCloseSlots(List<Integer> slots) {
-        this.closeSlots = slots;
-    }
-
-    public List<Integer> getCloseSlot() {
-        return this.closeSlots;
     }
 
     public void setResultsSlots(List<Integer> slots) {

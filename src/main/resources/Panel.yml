@@ -1,9 +1,12 @@
-# 合成面板ID
 # Gui ID
 gui:
-  # Crafting System Matrix
-  # 放置所需合成物品的槽位 Slot for the desired synthetic item
-  # 0是第一格，1是第二格，以此推类 0 is the first cell, 1 is the second cell, and so on
+  # 调试模式 显示边框 默认为真
+  debug: true
+  # 设置箱子大小 9的倍数
+  row: '54'
+  # 设置箱子GUI名
+  title: 'normal'
+  # 放置所需合成物品的槽位
   matrix:
     - 10
     - 11
@@ -21,16 +24,15 @@ gui:
     - 38
     - 39
     - 40
-  # 合成按钮的槽位 Slot for composite button
+  # 是否需要手动点击才会显出合成物品 默认为假
+  isButton: false
+  # 合成按钮的槽位 若上方为假，此项不起作用
   buttonSlots:
     - 16
-  # 合成结果的槽位 Slot of composite result
+  # 合成结果的槽位
   resultSlots:
     - 25
-  # 关闭按钮的槽位 Slot of close result
-  closeSlots:
-    - 43
-# 你可以添加更多合成面板 You can add more Gui
+# 你可以添加更多合成面板
 #xxx:
-#  matrix:
+#  debug:
 #  ...

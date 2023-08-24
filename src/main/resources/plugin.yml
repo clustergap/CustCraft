@@ -7,3 +7,5 @@ commands:
   icraft:
     description: iCraft command
     usage: /<command>
+    aliases:
+      - ict

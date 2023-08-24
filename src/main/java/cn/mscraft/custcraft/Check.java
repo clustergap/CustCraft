@@ -5,9 +5,9 @@ import cn.mscraft.custcraft.Util.LogUtil;
 
 public class Check {
     static void start() {
-        LogUtil.send("&râ” Â§aæ­£åœ¨åŠ è½½æ’ä»¶");
-        LogUtil.send("&râ” Â§ræ¬¢è¿ä½¿ç”¨");
-        LogUtil.send("&râ” Â§ræ’ä»¶å½“å‰ç‰ˆæœ¬ï¼šÂ§r2.1.3");
-        LogUtil.send("&râ”• Â§aæ’ä»¶æ­£å¸¸è¿è¡Œ");
+        LogUtil.send("&r©± ¡ìaÕıÔÚ¼ÓÔØ²å¼ş");
+        LogUtil.send("&r©Á ¡ìr»¶Ó­Ê¹ÓÃ");
+        LogUtil.send("&r©Á ¡ìr²å¼şµ±Ç°°æ±¾£º¡ìr2.1.3");
+        LogUtil.send("&r©¹ ¡ìa²å¼şÕı³£ÔËĞĞ");
     }
 }

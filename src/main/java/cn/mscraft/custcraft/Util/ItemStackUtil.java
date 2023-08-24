@@ -10,8 +10,6 @@ public class ItemStackUtil {
 
     private static ItemStack button;
 
-    private static ItemStack close;
-
     public static ItemStack getBaffle() {
         if (baffle == null) {
             ItemStack item = ReturnMaterial.blackStainedGlassPaneMaterial();
@@ -33,18 +31,6 @@ public class ItemStackUtil {
             button = item;
         }
         return button;
-    }
-
-    public static ItemStack getClose() {
-        if (close == null) {
-            ItemStack item = new ItemStack(Material.BARRIER);
-            ItemMeta meta = item.getItemMeta();
-            String itemName = CustCraft.instance.getConfig().getString("inventory.close").replaceAll("&", "§");
-                    meta.setDisplayName(itemName);
-            item.setItemMeta(meta);
-            close = item;
-        }
-        return close;
     }
 
     public static boolean isSimilar(ItemStack a, ItemStack b) {

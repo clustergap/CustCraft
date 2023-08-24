@@ -55,7 +55,7 @@ public final class ItemSerializerUtils {
                 WRITE_NBT = NMSUtils.getNMSClass("NBTCompressedStreamTools").getDeclaredMethod("a", new Class[] { NMSUtils.getNMSClass("NBTBase"), DataOutput.class });
                 WRITE_NBT.setAccessible(true);
             } catch (Exception localException1) {
-                throw new IllegalStateException("Êú™ÊâæÂà∞ÂÜôÂÖ•ÊñπÊ≥ï", localException1);
+                throw new IllegalStateException("Œ¥’“µΩ–¥»Î∑Ω∑®", localException1);
             }
         try {
             WRITE_NBT.invoke(null, new Object[] { localNBTTagList, localDataOutputStream });
@@ -107,13 +107,13 @@ public final class ItemSerializerUtils {
                         NMSUtils.getNMSClass("NBTReadLimiter") });
                 READ_NBT.setAccessible(true);
             } catch (Exception localException1) {
-                throw new IllegalStateException("Êú™ÊâæÂà∞ÊñπÊ≥ï.", localException1);
+                throw new IllegalStateException("Œ¥’“µΩ∑Ω∑®.", localException1);
             }
         try {
             Object limiter = NMSUtils.getNMSClass("NBTReadLimiter").getConstructor(new Class[] { long.class }).newInstance(new Object[] { Long.valueOf(Long.MAX_VALUE) });
             return READ_NBT.invoke(null, new Object[] { paramDataInput, Integer.valueOf(0), limiter });
         } catch (Exception localException2) {
-            throw new IllegalArgumentException("Êó†Ê≥ï‰ªéËØ•‰ΩçÁΩÆËØªÂèñÊï∞ÊçÆ" + paramDataInput, localException2);
+            throw new IllegalArgumentException("Œﬁ∑®¥”∏√Œª÷√∂¡»° ˝æ›" + paramDataInput, localException2);
         }
     }
 }

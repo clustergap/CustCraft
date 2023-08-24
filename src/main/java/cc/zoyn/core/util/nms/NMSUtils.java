@@ -1,6 +1,7 @@
 package cc.zoyn.core.util.nms;
 
 import cc.zoyn.core.util.reflect.ReflectionUtils;
+import cn.mscraft.custcraft.CustCraft;
 import cn.mscraft.custcraft.Util.LogUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
