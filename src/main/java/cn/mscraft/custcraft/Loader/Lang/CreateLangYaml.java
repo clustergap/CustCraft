@@ -21,7 +21,7 @@ public class CreateLangYaml {
             lang = "lang_ru";
         }
         try {
-            CreateYaml.RunResponse<Void> run = CreateYaml.copyFile(CustCraft.instance, lang + ".yml", false);
+            CreateYaml.RunResponse<Void> run = CreateYaml.copyFile(CustCraft.instance, "lang/" + lang + ".yml", false);
             langYaml.load(run.file);
         } catch (IOException | org.bukkit.configuration.InvalidConfigurationException error) {
             CustCraft.instance.getLogger().log(Level.WARNING, "Œﬁ∑®º”‘ÿ£∫" + lang + ".yml", error);

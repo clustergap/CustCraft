@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class CreateYaml {
     public static class RunResponse<T> {
@@ -42,8 +45,6 @@ public class CreateYaml {
     }
 
     public static <T> RunResponse<T> copyFile(Plugin pl, String path, boolean cover) throws IOException {
-        pl.getClass();
-        path.getClass();
         File df = pl.getDataFolder();
         File to = new File(df, path);
         if (to.isFile() && !cover)
@@ -51,18 +52,10 @@ public class CreateYaml {
         InputStream is = pl.getResource(path);
         if (is == null)
             return new RunResponse<>(false, to, "plugin.resource.not.found");
-        try (InputStream ct = is) {
-            byte[] buffer = new byte[1024];
-            (new File(to, "..")).mkdirs();
-            to.createNewFile();
-            try (FileOutputStream fos = new FileOutputStream(to)) {
-                while (true) {
-                    int leng = ct.read(buffer);
-                    if (leng == -1)
-                        break;
-                    fos.write(buffer, 0, leng);
-                }
-            }
+        final Path toPath = to.toPath();
+        if (!Files.exists(toPath)) {
+            Files.createDirectories(toPath.getParent());
+            Files.copy(is, toPath);
         }
         return new RunResponse<>(true, to, null);
     }
