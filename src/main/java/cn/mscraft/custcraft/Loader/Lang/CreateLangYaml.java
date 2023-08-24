@@ -4,10 +4,8 @@ import cn.mscraft.custcraft.CustCraft;
 import cn.mscraft.custcraft.Util.CreateYaml;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.Plugin;
 
 import java.io.IOException;
-import java.util.Currency;
 import java.util.logging.Level;
 
 public class CreateLangYaml {
