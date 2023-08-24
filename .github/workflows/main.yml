@@ -24,5 +24,5 @@ jobs:
         
       - uses: actions/upload-artifact@v2
         with:
-          name: HuskSync
-          path: target
+          name: CustCraft
+          path: build/libs
