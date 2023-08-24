@@ -38,14 +38,14 @@ public class IManager {
             if (panel.exists())
                 Yaml.loadPanels(YamlConfiguration.loadConfiguration(panel));
         } else {
-            LogUtil.send("§f[iCraft] §4附属插件" + plugin.getName() + "未启用, Hook失败");
+            LogUtil.send("§8[ §a群隙 ] §r附属插件" + plugin.getName() + "§r未启用, Hook失败");
         }
     }
 
     public static void hook(JavaPlugin plugin) {
         String path = plugin.getDataFolder().getPath();
-        File recipe = new File(path + File.separator + "Recipe.yml");
-        File panel = new File(path + File.separator + "Panel.yml");
+        File recipe = new File(path + File.separator + "recipe.yml");
+        File panel = new File(path + File.separator + "panel.yml");
         hook(plugin, recipe, panel);
     }
 

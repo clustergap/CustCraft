@@ -38,8 +38,8 @@ public final class CustCraft extends JavaPlugin {
         }
         (new RegisterEvent()).run();
         CreateLangYaml.reload();
-        Resource.saveResource("Recipe.yml", File.separator + "Model", false);
-        Resource.saveResource("Panel.yml", File.separator + "Model", false);
+        Resource.saveResource("recipe.yml", File.separator + "model", false);
+        Resource.saveResource("panel.yml", File.separator + "model", false);
         Yaml.loadPanels();
         Yaml.loadRecipes();
         Bukkit.getPluginCommand("ct").setExecutor((CommandExecutor)new MainCmd());

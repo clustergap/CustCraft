@@ -42,8 +42,7 @@ public class Craft {
                 if (inventory.getItem(slot) != null)
                     RSI.addLast(inventory.getItem(slot));
             }
-            if (pair != null &&
-                    canOverlap(pair.getResults(), RSI)) {
+            if (pair != null && canOverlap(pair.getResults(), RSI)) {
                 PanelCraftEvent panelCraftEvent = new PanelCraftEvent(panel, player, pair, items);
                 Bukkit.getPluginManager().callEvent((Event)panelCraftEvent);
                 if (!panelCraftEvent.isCancelled()) {

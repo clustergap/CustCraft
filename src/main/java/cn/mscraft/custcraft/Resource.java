@@ -45,19 +45,19 @@ public class Resource {
     }
 
     public static void reloadRecipe() {
-        recipe = YamlConfiguration.loadConfiguration(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "Model" + File.separator + "Recipe.yml"));
+        recipe = YamlConfiguration.loadConfiguration(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "model" + File.separator + "recipe.yml"));
     }
 
     public static void saveRecipes() {
         try {
-            recipe.save(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "Model" + File.separator + "Recipe.yml"));
+            recipe.save(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "model" + File.separator + "recipe.yml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void reloadPanel() {
-        panel = YamlConfiguration.loadConfiguration(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "Model" + File.separator + "Panel.yml"));
+        panel = YamlConfiguration.loadConfiguration(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "model" + File.separator + "panel.yml"));
     }
 
     public static YamlConfiguration getPanel() {
@@ -68,7 +68,7 @@ public class Resource {
 
     public static void savePanels() {
         try {
-            panel.save(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "Model" + File.separator + "Panel.yml"));
+            panel.save(new File(CustCraft.instance.getDataFolder().getPath() + File.separator + "model" + File.separator + "panel.yml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
