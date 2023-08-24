@@ -42,7 +42,7 @@ public final class CustCraft extends JavaPlugin {
         Resource.saveResource("Panel.yml", File.separator + "Model", false);
         Yaml.loadPanels();
         Yaml.loadRecipes();
-        Bukkit.getPluginCommand("icraft").setExecutor((CommandExecutor)new MainCmd());
+        Bukkit.getPluginCommand("ct").setExecutor((CommandExecutor)new MainCmd());
         IManager.titleSelGui.put("selTitle", CustCraft.instance.getConfig().getString("selectGui.title").replaceAll("&", "§"));
     }
 
