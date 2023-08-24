@@ -11,6 +11,12 @@ repositories {
         name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
+
+    maven {
+        name = 'codemc-repo'
+        url = 'https://repo.codemc.io/repository/maven-public/'
+    }
+
     maven {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
@@ -19,6 +25,7 @@ repositories {
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
+    compileOnly 'de.tr7zw:item-nbt-api-plugin:2.11.3'
 }
 
 def targetJavaVersion = 17

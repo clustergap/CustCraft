@@ -1,14 +1,11 @@
 package cn.mscraft.custcraft.Loader;
 
-import cc.zoyn.core.util.serializer.ItemSerializerUtils;
 import cn.mscraft.custcraft.API.IManager;
-import cn.mscraft.custcraft.CustCraft;
 import cn.mscraft.custcraft.Model.Panel;
 import cn.mscraft.custcraft.Model.Recipe;
 import cn.mscraft.custcraft.Resource;
-import org.bukkit.Bukkit;
+import cn.mscraft.custcraft.Util.ItemSerializerUtils;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class Yaml {
             String itemMatrix = yaml.getString(key + ".itemMatrix");
             String results = yaml.getString(key + ".results");
             if (panelId != null && itemMatrix != null && results != null) {
-                Recipe recipe = new Recipe(key, panelId, ItemSerializerUtils.fromBase64(itemMatrix), ItemSerializerUtils.fromBase64(results));
+                Recipe recipe = new Recipe(key, panelId, ItemSerializerUtils.fromNbtString(itemMatrix), ItemSerializerUtils.fromNbtString(results));
                 IManager.registerRecipe(recipe);
             }
         }
@@ -33,8 +30,8 @@ public class Yaml {
     public static void saveRecipe(Recipe recipe) {
         YamlConfiguration yaml = Resource.getRecipe();
         yaml.set(recipe.getId() + ".panelId", recipe.getPanelId());
-        yaml.set(recipe.getId() + ".itemMatrix", ItemSerializerUtils.toBase64(recipe.getItemMatrix()).replaceAll("[\r\n]", ""));
-        yaml.set(recipe.getId() + ".results", ItemSerializerUtils.toBase64(recipe.getResults()).replaceAll("[\r\n]", ""));
+        yaml.set(recipe.getId() + ".itemMatrix", ItemSerializerUtils.toNbtString(recipe.getItemMatrix()));
+        yaml.set(recipe.getId() + ".results", ItemSerializerUtils.toNbtString(recipe.getResults()));
         Resource.saveRecipes();
     }
 
