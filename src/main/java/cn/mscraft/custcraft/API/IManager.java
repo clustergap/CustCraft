@@ -38,7 +38,7 @@ public class IManager {
             if (panel.exists())
                 Yaml.loadPanels(YamlConfiguration.loadConfiguration(panel));
         } else {
-            LogUtil.send("¡ìf[iCraft] ¡ì4¸½Êô²å¼þ" + plugin.getName() + "Î´ÆôÓÃ, HookÊ§°Ü");
+            LogUtil.send("Â§f[iCraft] Â§4é™„å±žæ’ä»¶" + plugin.getName() + "æœªå¯ç”¨, Hookå¤±è´¥");
         }
     }
 
@@ -117,9 +117,9 @@ public class IManager {
                         j++;
                     }
                 } else if (panel.getButtonSlots().contains(Integer.valueOf(i)) && !isView) {
-//                    if (panel.getIsButton()) {
+                    if (panel.getIsButton()) {
                         GUI.setItem(i, ItemStackUtil.getButton());
-//                    }
+                    }
                 } else if (panel.getResultsSlots().contains(Integer.valueOf(i))) {
                     if (!isCraft && results.size() >= k + 1) {
                         GUI.setItem(i, results.get(k));
@@ -137,8 +137,8 @@ public class IManager {
     public static HashMap<String, String> titleSelGui = new LinkedHashMap<>();
 
     public static void openSelGui(Player player) {
-        String vanillaGui = CustCraft.instance.getConfig().getString("selectGui.vanillaGuiButton").replaceAll("&", "¡ì");
-                String newGui = CustCraft.instance.getConfig().getString("selectGui.newGuiButton").replaceAll("&", "¡ì");
+        String vanillaGui = CustCraft.instance.getConfig().getString("selectGui.vanillaGuiButton").replaceAll("&", "Â§");
+                String newGui = CustCraft.instance.getConfig().getString("selectGui.newGuiButton").replaceAll("&", "Â§");
                         Inventory gui = Bukkit.createInventory((InventoryHolder)player, 9, titleSelGui.get("selTitle"));
         gui.setItem(3, itemBuild(Material.CHEST, vanillaGui));
         gui.setItem(5, itemBuild(Material.ENDER_CHEST, newGui));

@@ -1,6 +1,5 @@
 # 语言 Language 可选 Optional: lang_en lang_cn lang_ru
 language: "lang_cn"
-
 # 设置
 setting:
   # 如果是new，右键工作台时打开自定义矩阵合成系统
