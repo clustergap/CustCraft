@@ -26,17 +26,20 @@ public class Craft {
     public static void craft(Player player, Panel panel, Inventory inventory) {
         if (!EditRecipe.EDITING.containsKey(player.getName())) {
             LinkedList<ItemStack> items = new LinkedList<>();
+            // 配方原料
             for (Iterator<Integer> iterator1 = panel.getMatrixSlots().iterator(); iterator1.hasNext(); ) {
                 int i = ((Integer)iterator1.next()).intValue();
                 items.addLast(inventory.getItem(i));
             }
             Recipe pair = null;
             Collection<Recipe> recipes = IManager.getRecipes(panel.getId());
+            // 配方验证
             for (Recipe recipe : recipes) {
                 if (canCraft(recipe.getItemMatrix(), items))
                     pair = recipe;
             }
             LinkedList<ItemStack> RSI = new LinkedList<>();
+            // 配方结果
             for (Iterator<Integer> iterator2 = panel.getResultsSlots().iterator(); iterator2.hasNext(); ) {
                 int slot = ((Integer)iterator2.next()).intValue();
                 if (inventory.getItem(slot) != null)

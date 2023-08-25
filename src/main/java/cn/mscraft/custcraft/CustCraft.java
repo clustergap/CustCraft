@@ -4,7 +4,7 @@ import cn.mscraft.custcraft.API.IManager;
 import cn.mscraft.custcraft.Command.MainCmd;
 import cn.mscraft.custcraft.Loader.Lang.CreateLangYaml;
 import cn.mscraft.custcraft.Loader.Yaml;
-import cn.mscraft.custcraft.Model.ICraftTechHolder;
+import cn.mscraft.custcraft.Model.InvHolder;
 import cn.mscraft.custcraft.Model.Panel;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -52,9 +52,9 @@ public final class CustCraft extends JavaPlugin {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 Inventory inventory = player.getOpenInventory().getTopInventory();
                 InventoryHolder holder = inventory.getHolder();
-                if (!(holder instanceof ICraftTechHolder))
+                if (!(holder instanceof InvHolder))
                     continue;
-                String id = ((ICraftTechHolder)holder).getPanelId();
+                String id = ((InvHolder)holder).getPanelId();
                 if (id != null) {
                     player.closeInventory();
                     Optional<Panel> optionalPanel = IManager.getPanel(id);

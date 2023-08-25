@@ -2,7 +2,7 @@ package cn.mscraft.custcraft.EventListener;
 
 import cn.mscraft.custcraft.API.IManager;
 import cn.mscraft.custcraft.CustCraft;
-import cn.mscraft.custcraft.Model.ICraftTechHolder;
+import cn.mscraft.custcraft.Model.InvHolder;
 import cn.mscraft.custcraft.Model.Panel;
 import cn.mscraft.custcraft.Util.ItemStackUtil;
 import org.bukkit.Bukkit;
@@ -25,8 +25,8 @@ public class InventoryDrag implements Listener {
         Inventory inventory = event.getInventory();
         if (inventory != null) {
             InventoryHolder holder = inventory.getHolder();
-            if (holder instanceof ICraftTechHolder) {
-                Optional<Panel> optionalPanel = IManager.getPanel(((ICraftTechHolder)holder).getPanelId());
+            if (holder instanceof InvHolder) {
+                Optional<Panel> optionalPanel = IManager.getPanel(((InvHolder)holder).getPanelId());
                 if (optionalPanel.isPresent()) {
                     Panel panel = optionalPanel.get();
                     boolean isCraft = true;

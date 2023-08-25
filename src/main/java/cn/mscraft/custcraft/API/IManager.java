@@ -1,10 +1,9 @@
 package cn.mscraft.custcraft.API;
 
 import cn.mscraft.custcraft.API.Events.PanelOpenEvent;
-import cn.mscraft.custcraft.Craft;
 import cn.mscraft.custcraft.CustCraft;
 import cn.mscraft.custcraft.Loader.Yaml;
-import cn.mscraft.custcraft.Model.ICraftTechHolder;
+import cn.mscraft.custcraft.Model.InvHolder;
 import cn.mscraft.custcraft.Model.Panel;
 import cn.mscraft.custcraft.Model.Recipe;
 import cn.mscraft.custcraft.Util.ItemStackUtil;
@@ -20,7 +19,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.checker.units.qual.C;
 
 import java.io.File;
 import java.util.*;
@@ -107,7 +105,7 @@ public class IManager {
         if (!panelOpenEvent.isCancelled()) {
             String titleGui = panel.getTitle();
             int rowGui = panel.getRow();
-            Inventory GUI = Bukkit.createInventory((InventoryHolder)new ICraftTechHolder(panel.getId()), rowGui, titleGui);
+            Inventory GUI = Bukkit.createInventory((InventoryHolder)new InvHolder(panel.getId()), rowGui, titleGui);
             int j = 0;
             int k = 0;
             for (int i = 0; i < GUI.getSize(); i++) {
@@ -116,10 +114,8 @@ public class IManager {
                         GUI.setItem(i, matrix.get(j));
                         j++;
                     }
-                } else if (panel.getButtonSlots().contains(Integer.valueOf(i)) && !isView) {
-                    if (panel.getIsButton()) {
+                } else if (panel.getButtonSlots().contains(Integer.valueOf(i)) && !isView && panel.getIsButton()) {
                         GUI.setItem(i, ItemStackUtil.getButton());
-                    }
                 } else if (panel.getResultsSlots().contains(Integer.valueOf(i))) {
                     if (!isCraft && results.size() >= k + 1) {
                         GUI.setItem(i, results.get(k));

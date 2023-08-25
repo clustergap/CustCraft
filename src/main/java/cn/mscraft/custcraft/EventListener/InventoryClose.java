@@ -3,7 +3,7 @@ package cn.mscraft.custcraft.EventListener;
 import cn.mscraft.custcraft.API.Events.PanelCloseEvent;
 import cn.mscraft.custcraft.API.IManager;
 import cn.mscraft.custcraft.Command.SubCommand.EditRecipe;
-import cn.mscraft.custcraft.Model.ICraftTechHolder;
+import cn.mscraft.custcraft.Model.InvHolder;
 import cn.mscraft.custcraft.Model.Panel;
 import cn.mscraft.custcraft.Util.ItemStackUtil;
 import org.bukkit.Bukkit;
@@ -26,8 +26,8 @@ public class InventoryClose implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void panelClose(InventoryCloseEvent event) {
         InventoryHolder holder = event.getInventory().getHolder();
-        if (holder instanceof ICraftTechHolder) {
-            String id = ((ICraftTechHolder)holder).getPanelId();
+        if (holder instanceof InvHolder) {
+            String id = ((InvHolder)holder).getPanelId();
             if (EditRecipe.EDITING.containsKey(event.getPlayer().getName())) {
                 EditRecipe.EDITING.remove(event.getPlayer().getName());
             } else {
