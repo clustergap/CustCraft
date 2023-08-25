@@ -3,10 +3,10 @@ package cn.mscraft.custcraft.Model;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
-public class ICraftTechHolder implements InventoryHolder {
+public class InvHolder implements InventoryHolder {
     private String panelId;
 
-    public ICraftTechHolder(String panelId) {
+    public InvHolder(String panelId) {
         this.panelId = panelId;
     }
 
